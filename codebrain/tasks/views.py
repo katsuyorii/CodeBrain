@@ -9,15 +9,11 @@ class IndexView(TemplateView):
 class TasksView(ListView):
     model = Task
     template_name = 'tasks/tasks.html'
-    context_object_name = 'objects'
+    context_object_name = 'tasks'
+    paginate_by = 3
 
     def get_queryset(self):
-        queryset = {
-            'tasks': Task.objects.select_related('complexity').all(),
-            'prog_lang': ProgLang.objects.all(),
-            'complexity': Complexity.objects.all(),
-            'tags': Tag.objects.all(),
-        }
+        queryset = Task.objects.all().select_related('complexity')
 
         return queryset
 

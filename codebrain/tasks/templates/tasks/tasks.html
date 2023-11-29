@@ -9,7 +9,7 @@
             <a class="task-new-card-href" href="#">У вас есть интересная задачка?</a>
         </div>
         {% endif %}
-        {% for task in objects.tasks %}
+        {% for task in tasks %}
         <div class="task-card">
             <a class="task-card-title" href="#">{{ task.title }}</a>
             <p class="task-card-desc">{{ task.description }}</p>
@@ -21,14 +21,29 @@
             </div>
         </div>
         {% endfor %}
+        {% if is_paginated %}
+                <div class="pagination">
+                    {% if page_obj.has_previous %}
+                        <a href="?page={{page_obj.previous_page_number}}">«</a>
+                    {% else %}
+                        <a class="non-activate">«</a>
+                    {% endif %}
+                    {% for page in paginator.page_range %}
+                        <a href="?page={{page}}">{{page}}</a>
+                    {% endfor %}
+                    {% if page_obj.has_next %}
+                        <a href="?page={{page_obj.next_page_number}}">»</a>
+                    {% else %}
+                        <a class="non-activate">»</a>
+                    {% endif %}
+                </div>
+        {% endif %}
     </div>
     <div class="main-row-filters">
         <form method="POST" name="form_lang">
             <label class="select-label">Язык</label>
             <select class="select-css">
-                {% for lang in objects.prog_lang %}
-                    <option value="{{ lang.slug }}">{{ lang.name }}</option>
-                {% endfor %}
+                
             </select>
             <br>
             <button class="select-button" type="submit">Найти</button>
@@ -37,9 +52,7 @@
         <form method="POST" name="form_comp">
             <label class="select-label">Сложность</label>
             <select class="select-css">
-                {% for comp in objects.complexity %}
-                    <option value="{{ comp.slug }}">{{ comp.name }}</option>
-                {% endfor %}
+                
             </select>
             <br>
             <button class="select-button" type="submit">Найти</button>
@@ -48,9 +61,7 @@
         <form method="POST" name="form_comp">
             <label class="select-label">Теги</label>
             <select class="select-css">
-                {% for tag in objects.tags %}
-                    <option value="{{ tag.slug }}">{{ tag.name }}</option>
-                {% endfor %}
+                
             </select>
             <br>
             <button class="select-button" type="submit">Найти</button>
