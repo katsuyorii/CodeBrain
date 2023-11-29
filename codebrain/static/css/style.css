@@ -1,0 +1,582 @@
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+blockquote,
+q {
+    quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+body {
+    font-family: 'IBM Plex Mono', monospace;
+}
+
+.header {
+    height: 100px;
+    padding-top: 10px;
+}
+
+.wrapper {
+    margin: 0 auto;
+    width: 1024px;
+}
+
+.header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-row-logo {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.logo-href {
+    text-decoration: none;
+    color: blueviolet;
+    font-size: 27px;
+    font-weight: 700;
+}
+
+.header-row-menu {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.menu-item {
+    text-decoration: none;
+    color: black;
+    font-size: 17px;
+}
+
+.menu-item:hover {
+    color: blueviolet;
+    transition: 0.3s linear;
+}
+
+.header-row-login {
+    text-decoration: none;
+    color: black;
+    padding: 12px 15px;
+    background-color: skyblue;
+    border-radius: 10px;
+}
+
+.task-card {
+    margin-bottom: 40px;
+}
+
+.task-card-title {
+    text-decoration: none;
+    color: black;
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.task-card-title:hover {
+    color: blueviolet;
+    transition: 0.3s linear;
+}
+
+.task-card-desc {
+    padding-top: 25px;
+    font-size: 18px;
+}
+
+.task-card-tags-row {
+    padding-top: 25px;
+    display: flex;
+    gap: 12px;
+}
+
+.task-card-tag-comp {
+    padding: 6px 9px;
+    border-radius: 5px;
+    background-color: black;
+    color: white;
+    font-size: 13px;
+}
+
+.task-card-tag {
+    padding: 6px 9px;
+    border-radius: 5px;
+    background-color: violet;
+    color: white;
+    font-size: 13px;
+}
+
+.main-row {
+    display: flex;
+}
+
+.select-label {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.select-css {
+    position: relative;
+    display: inline-block;
+    margin-top: 10px;
+    width: 190px;
+    font-size: 16px;
+    padding: 7px 7px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+}
+
+.select-css:hover {
+    border: 1px solid gray;
+    cursor: pointer;
+}
+
+.select-button {
+    padding: 8px 75px;
+    background-color: skyblue;
+    border: 1px solid skyblue;
+    border-radius: 5px;
+    margin-top: 10px;
+    cursor: pointer;
+    font-family: 'IBM Plex Mono', monospace;
+}
+
+.input-login {
+    font-size: 17px;
+    padding: 7px 7px;
+    margin-top: 10px;
+    width: 340px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+}
+
+.label-login {
+    font-size: 19px;
+    font-weight: 500;
+}
+
+.button-login {
+    padding: 8px 153px;
+    background-color: skyblue;
+    border: 1px solid skyblue;
+    border-radius: 5px;
+    margin-top: 10px;
+    cursor: pointer;
+    font-size: 17px;
+    font-family: 'IBM Plex Mono', monospace;
+}
+
+.social-login-vk {
+    text-decoration: none;
+    color: white;
+    padding: 8px 105px;
+    background-color: blue;
+    border: 1px solid blue;
+    border-radius: 5px;
+    margin-top: 10px;
+    cursor: pointer;
+    font-size: 17px;
+}
+
+.social-login-gmail {
+    text-decoration: none;
+    color: white;
+    padding: 8px 85px;
+    background-color: goldenrod;
+    border: 1px solid goldenrod;
+    border-radius: 5px;
+    margin-top: 10px;
+    cursor: pointer;
+    font-size: 17px;
+}
+
+.login-href-reg {
+    text-decoration: none;
+    color: black;
+    font-size: 15px;
+    padding-left: 85px;
+}
+
+.login-href-reg:hover {
+    color: blueviolet;
+    transition: 0.3s linear;
+}
+
+.button-reg {
+    padding: 8px 97px;
+    background-color: skyblue;
+    border: 1px solid skyblue;
+    border-radius: 5px;
+    margin-top: 10px;
+    cursor: pointer;
+    font-size: 17px;
+    font-family: 'IBM Plex Mono', monospace;
+}
+
+.reg-href-login {
+    text-decoration: none;
+    color: black;
+    font-size: 15px;
+    padding-left: 72px;
+}
+
+.reg-href-login:hover {
+    color: blueviolet;
+    transition: 0.3s linear;
+}
+
+.profile-row {
+    display: flex;
+    gap: 30px;
+}
+
+.button-profile {
+    padding: 8px 135px;
+    background-color: skyblue;
+    border: 1px solid skyblue;
+    border-radius: 5px;
+    margin-top: 10px;
+    cursor: pointer;
+    font-size: 17px;
+    font-family: 'IBM Plex Mono', monospace;
+}
+
+.profile-info-logo {
+    max-width: 360px;
+    max-height: 360px;
+    display: block;
+}
+
+.profile-tasks-line {
+    display: flex;
+    gap: 40px;
+    border-bottom: 1px solid lightgray;
+    padding-bottom: 10px;
+}
+
+.profile-tasks-line-href {
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+}
+
+.profile-tasks-line-href:hover {
+    color: blueviolet;
+}
+
+.task-row {
+    display: flex;
+    gap: 20px;
+}
+
+.task-info-content {
+    padding-top: 20px;
+    font-size: 17px;
+}
+
+.task-sol-title {
+    color: black;
+    font-size: 30px;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.task-sol-yap {
+    color: black;
+    font-size: 18px;
+    font-weight: 500;
+    padding-bottom: 10px;
+}
+
+.task-solution {
+    width: 600px;
+}
+
+.solution {
+    margin-top: 10px;
+    border: 1px solid #dddddd;
+    border-radius: 3px;
+    padding: 10px 10px;
+    white-space: pre-wrap;
+    font-family: 'Space Mono', monospace;
+}
+
+.task-sol-card {
+    margin-bottom: 20px;
+}
+
+.task-new-card {
+    height: 60px;
+    background-color: lightgoldenrodyellow;
+    width: 750px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+}
+
+.task-new-card-href {
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+}
+
+.task-new-card-href:hover {
+    color: blueviolet;
+    transition: 0.3s linear;
+}
+
+.header-row-line-profile {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.header-row-profile {
+    text-decoration: none;
+    color: black;
+    font-size: 17px;
+}
+
+.header-row-profile:hover {
+    color: blueviolet;
+    transition: 0.3s linear;
+}
+
+.img-obertka {
+    display: block;
+    border-radius: 50%;
+    overflow: hidden;
+    width: 35px;
+    height: 35px;
+}
+
+.header-row-img-profile {
+    width: 35px;
+    height: 35px;
+    object-fit: cover;
+}
+
+.profile-logout {
+    text-decoration: none;
+    color: white;
+    padding: 8px 151px;
+    background-color: red;
+    border: 1px solid red;
+    border-radius: 5px;
+    margin-top: 15px;
+    cursor: pointer;
+    font-size: 17px;
+}
+
+.task-comment-title {
+    font-size: 26px;
+    font-weight: 500;
+    padding-bottom: 15px;
+}
+
+.task-comment-input {
+    border-radius: 8px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 18px;
+}
+
+.task-comment-button {
+    padding: 8px 40px;
+    background-color: green;
+    border: 1px solid green;
+    border-radius: 5px;
+    margin-top: 10px;
+    cursor: pointer;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 17px;
+}
+
+.main-block-anime-detail-bottom-comment {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    margin-top: 30px;
+}
+
+.img_obertka {
+    display: block;
+    border-radius: 50%;
+    overflow: hidden;
+    width: 60px;
+    height: 60px;
+}
+
+.main-block-anime-detail-bottom-comment-img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+}
+
+.main-block-anime-detail-bottom-comment-content {
+    width: 600px;
+}
+
+.main-block-anime-detail-bottom-comment-content-namedata {
+    display: flex;
+    gap: 10px;
+}
+
+.main-block-anime-detail-bottom-comment-content-name {
+    text-decoration: none;
+    color: Chocolate;
+    font-size: 17px;
+}
+
+.main-block-anime-detail-bottom-comment-content-data {
+    font-size: 12px;
+    color: gray;
+    padding-top: 5px;
+}
+
+.main-block-anime-detail-bottom-comment-content-delete {
+    text-decoration: none;
+    color: red;
+    font-size: 12px;
+    padding-top: 5px;
+}
+
+.main-block-anime-detail-bottom-comment-content-name:hover {
+    color: orangered;
+    transition: 0.3s linear;
+}
+
+.main-block-anime-detail-bottom-comment-content-delete:hover {
+    color: orangered;
+    transition: 0.3s linear;
+}
+
+.main-block-anime-detail-bottom-comment-content-text {
+    width: 550px;
+    padding-top: 5px;
+}
