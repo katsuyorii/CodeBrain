@@ -21,23 +21,24 @@
             <br>
             <button class="task-comment-button" type="submit">Отправить</button>
         </form>
-        <div class="main-block-anime-detail-bottom-comment">
-            <div class="img_obertka">
-                <img class="main-block-anime-detail-bottom-comment-img" src="img/profile.jpg" alt="Logo">
-            </div>
-            <div class="main-block-anime-detail-bottom-comment-content">
-                <div class="main-block-anime-detail-bottom-comment-content-namedata">
-                    <a class="main-block-anime-detail-bottom-comment-content-name" href="#">None None</a>
-                    <p class="main-block-anime-detail-bottom-comment-content-data">21.03.2013 </p>
-                    <a class="main-block-anime-detail-bottom-comment-content-delete"
-                        href="{{ comm.get_absolute_url }}">Удалить</a>
+        {% for comm in comments %}
+            <div class="main-block-anime-detail-bottom-comment">
+                <div class="img_obertka">
+                    <img class="main-block-anime-detail-bottom-comment-img" src="{{ comm.author.image.url }}" alt="Logo">
                 </div>
-                <p class="main-block-anime-detail-bottom-comment-content-text">тут что-то пишетсятут что-то
-                    пишетсятут что-то пишетсятут что-то пишетсятут что-то пишетсятут что-то пишетсятут
-                    что-то пишетсятут что-то пишетсятут что-то пишетс
-                </p>
+                <div class="main-block-anime-detail-bottom-comment-content">
+                    <div class="main-block-anime-detail-bottom-comment-content-namedata">
+                        <a class="main-block-anime-detail-bottom-comment-content-name" href="#">{{ comm.author.username }}</a>
+                        <p class="main-block-anime-detail-bottom-comment-content-data">{{ comm.date_created }}</p>
+                        {% if comm.author.pk == user.pk %}
+                        <a class="main-block-anime-detail-bottom-comment-content-delete"
+                            href="{{ comm.get_absolute_url }}">Удалить</a>
+                        {% endif %}
+                    </div>
+                    <p class="main-block-anime-detail-bottom-comment-content-text">{{ comm.content }}</p>
+                </div>
             </div>
-        </div>
+        {% endfor %}
     </div>
     <div class="task-solution">
         <p class="task-sol-title">Решения</p>

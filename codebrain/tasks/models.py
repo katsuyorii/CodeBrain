@@ -75,9 +75,10 @@ class Comment(models.Model):
     task = models.ForeignKey(verbose_name='Задача', to=Task, on_delete=models.CASCADE)
     author = models.ForeignKey(verbose_name='Автор', to=User, on_delete=models.CASCADE)
     content = models.TextField(verbose_name='Текст комментария')
+    date_created = models.DateTimeField(verbose_name='Дата создания', auto_now_add=True, null=True, blank=True)
 
     def __str__(self):
-        return f'{self.prog_lang.name} | {self.task.title}'
+        return f'{self.author.username} | {self.task.title}'
 
     class Meta:
         verbose_name = 'Комментарий'

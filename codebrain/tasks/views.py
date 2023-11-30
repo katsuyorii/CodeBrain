@@ -1,5 +1,5 @@
 from django.views.generic import TemplateView, ListView, DetailView
-from .models import Task, Solutiuon
+from .models import Task, Solutiuon, Comment
 
 
 class IndexView(TemplateView):
@@ -39,5 +39,6 @@ class TaskDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         context['title'] = self.object.title
         context['solutions'] = Solutiuon.objects.filter(task_id=self.object.pk).select_related('prog_lang')
+        context['comments'] = Comment.objects.filter(task_id=self.object.pk).select_related('author')
 
         return context
