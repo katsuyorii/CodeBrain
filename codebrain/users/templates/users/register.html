@@ -1,59 +1,25 @@
-<!DOCTYPE html>
-<html lang="ru">
+{% extends "tasks/base.html" %}
+{% load static %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-    <title>Задания</title>
-</head>
-
-<body>
-    <header class="header">
-        <div class="wrapper">
-            <div class="header-row">
-                <div class="header-row-logo">
-                    <img src="img/logo.svg" alt="Logo">
-                    <a class="logo-href" href="#">Code Brain</a>
-                </div>
-                <ol class="header-row-menu">
-                    <li><a href="#" class="menu-item">Главная</a></li>
-                    <li><a href="#" class="menu-item">Задачки</a></li>
-                    <li><a href="#" class="menu-item">Учебные пособия</a></li>
-                    <li><a href="#" class="menu-item">О проекте</a></li>
-                </ol>
-                <a href="#" class="header-row-login">Войти</a>
-            </div>
-        </div>
-    </header>
-    <div class="main">
-        <div class="wrapper">
-            <form method="POST"">
-                <label class=" label-login" for=" email">Почта</label>
-                <br>
-                <input class="input-login" name=" email" id="email" type="text" placeholder="Введите email">
-                <br>
-                <br>
-                <label class=" label-login" for=" password">Пароль</label>
-                <br>
-                <input class="input-login" name=" password2" id="password2" type="password"
-                    placeholder="Введите пароль">
-                <br>
-                <br>
-                <label class=" label-login" for=" password">Повторите пароль</label>
-                <br>
-                <input class="input-login" name=" password2" id="password2" type="password"
-                    placeholder="Введите пароль еще раз">
-                <br>
-                <button class="button-reg" type="submit">Зарегестрироваться</button>
-            </form>
-            <br>
-            <a class="reg-href-login" href="#">У вас уже есть аккаунт?</a>
-        </div>
-    </div>
-</body>
-
-</html>
+{% block content %}
+<form method="POST">
+    {% csrf_token %}
+    <label class=" label-login" for="{{ form.username.id_for_label }}">Почта</label>
+    <br>
+    {{ form.username }}
+    <br>
+    <br>
+    <label class=" label-login" for="{{ form.password1.id_for_label }}">Пароль</label>
+    <br>
+    {{ form.password1 }}
+    <br>
+    <br>
+    <label class=" label-login" for="{{ form.password2.id_for_label }}">Повторите пароль</label>
+    <br>
+    {{ form.password2 }}
+    <br>
+    <button class="button-reg" type="submit">Зарегестрироваться</button>
+</form>
+<br>
+<a class="reg-href-login" href="{% url 'login' %}">У вас уже есть аккаунт?</a>
+{% endblock content %}

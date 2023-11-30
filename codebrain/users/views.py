@@ -1,7 +1,7 @@
 from django.contrib.auth.views import LoginView
-from django.views.generic import UpdateView
+from django.views.generic import UpdateView, CreateView
 from django.urls import reverse_lazy
-from .forms import UserLoginForm, ProfileUserForm
+from .forms import UserLoginForm, ProfileUserForm, UserRegistrationForm
 from .models import User
 
 
@@ -23,3 +23,11 @@ class ProfileUserView(UpdateView):
 
     def get_object(self):
         return self.request.user
+
+
+class RegistrationUserView(CreateView):
+    form_class = UserRegistrationForm
+    template_name = 'users/register.html'
+
+    def get_success_url(self):
+        return reverse_lazy('profile')
