@@ -41,20 +41,15 @@
     </div>
     <div class="task-solution">
         <p class="task-sol-title">Решения</p>
-        <div class="task-sol-card">
-            <p class="task-sol-yap">Python</p>
-            <details close>
-                <summary>Решение</summary>
-                <p class="solution">print('hello')</p>
-            </details>
-        </div>
-        <div class="task-sol-card">
-            <p class="task-sol-yap">C++</p>
-            <details close>
-                <summary>Решение</summary>
-                <p class="solution">123</p>
-            </details>
-        </div>
+        {% for sol in solutions %}
+            <div class="task-sol-card">
+                <p class="task-sol-yap">{{ sol.prog_lang.name }}</p>
+                <details close>
+                    <summary>Решение</summary>
+                    <p class="solution">{{ sol.content }}</p>
+                </details>
+            </div>
+        {% endfor %}
     </div>
 </div>
 {% endblock content %}

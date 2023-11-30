@@ -1,5 +1,5 @@
 from django.views.generic import TemplateView, ListView, DetailView
-from .models import Task
+from .models import Task, Solutiuon
 
 
 class IndexView(TemplateView):
@@ -30,8 +30,14 @@ class TaskDetailView(DetailView):
     context_object_name = 'task'
     slug_url_kwarg = 'task_slug'
 
+    def get_queryset(self):
+        queryset = Task.objects.filter(slug=self.kwargs.get(self.slug_url_kwarg)).select_related('complexity')
+
+        return queryset
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = self.object.title
+        context['solutions'] = Solutiuon.objects.filter(task_id=self.object.pk).select_related('prog_lang')
 
         return context
