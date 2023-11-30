@@ -28,7 +28,16 @@
                     <li><a href="#" class="menu-item">Учебные пособия</a></li>
                     <li><a href="#" class="menu-item">О проекте</a></li>
                 </ol>
+                {% if user.is_authenticated %}
+                <div class="header-row-line-profile">
+                    <a href="{% url 'profile' %}" class="header-row-profile">{{ user.username }}</a>
+                    <div class="img-obertka">
+                        <img class="header-row-img-profile" src="{{ user.image.url }}" alt="Logo">
+                    </div>
+                </div>
+                {% else %}
                 <a href="{% url 'login' %}" class="header-row-login">Войти</a>
+                {% endif %}
             </div>
         </div>
     </header>

@@ -1,75 +1,57 @@
-<!DOCTYPE html>
-<html lang="ru">
+{% extends "tasks/base.html" %}
+{% load static %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-    <title>Задания</title>
-</head>
-
-<body>
-    <header class="header">
-        <div class="wrapper">
-            <div class="header-row">
-                <div class="header-row-logo">
-                    <img src="img/logo.svg" alt="Logo">
-                    <a class="logo-href" href="#">Code Brain</a>
-                </div>
-                <ol class="header-row-menu">
-                    <li><a href="#" class="menu-item">Главная</a></li>
-                    <li><a href="#" class="menu-item">Задачки</a></li>
-                    <li><a href="#" class="menu-item">Учебные пособия</a></li>
-                    <li><a href="#" class="menu-item">О проекте</a></li>
-                </ol>
-                <a href="#" class="header-row-login">Войти</a>
-            </div>
+{% block content %}
+    <div class="profile-row">
+        <div class="profile-info">
+            <img class="profile-info-logo" src="{{ user.image.url }}" alt="Logo">
+            <br>
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <label class="input-file" for="{{ form.image.id_for_label }}">
+                    <span class="input-file-text" type="text"></span>
+                    {{ form.image }}
+                    <span class="input-file-btn">Выберите файл</span>
+                </label>
+                <br>
+                <br>
+                <label class=" label-login" for="{{ form.username.id_for_label }}">Имя пользователя</label>
+                <br>
+                {{ form.username }}
+                <br>
+                <br>
+                <label class=" label-login" for="{{ form.email.id_for_label }}">Email</label>
+                <br>
+                {{ form.email }}
+                <br>
+                <button class="button-profile" type="submit">Сохранить</button>
+            </form>
+            <br>
+            <a href="#" class="profile-logout">Выйти</a>
         </div>
-    </header>
-    <div class="main">
-        <div class="wrapper">
-            <div class="profile-row">
-                <div class="profile-info">
-                    <img class="profile-info-logo" src="img/profile.jpg" alt="Logo">
-                    <br>
-                    <form method="POST"">
-                        <label class=" label-login" for=" first_name">Имя пользователя</label>
-                        <br>
-                        <input class="input-login" name=" first_name" id="first_name" type="text">
-                        <br>
-                        <br>
-                        <label class=" label-login" for=" email">Email</label>
-                        <br>
-                        <input class="input-login" name=" email" id="email" type="text">
-                        <br>
-                        <button class="button-profile" type="submit">Сохранить</button>
-                    </form>
-                    <br>
-                    <a href="#" class="profile-logout">Выйти</a>
-                </div>
-                <div class=" profile-tasks">
-                    <div class="profile-tasks-line">
-                        <a class="profile-tasks-line-href" href="#">Мои задачи</a>
-                        <a class="profile-tasks-line-href" href="#">На рассмотрении</a>
-                    </div>
-                    <br>
-                    <div class="task-card">
-                        <a class="task-card-title" href="#">Вернуть сумму двух чисел</a>
-                        <p class="task-card-desc">Создайте функцию, которая принимает два числа в качестве параметров и
-                            возвращает их сумму.</p>
-                        <div class="task-card-tags-row">
-                            <p class="task-card-tag-comp">Легко</p>
-                            <p class="task-card-tag">Алгебра</p>
-                            <p class="task-card-tag">Математика</p>
-                        </div>
-                    </div>
+        <div class=" profile-tasks">
+            <div class="profile-tasks-line">
+                <a class="profile-tasks-line-href" href="#">Мои задачи</a>
+                <a class="profile-tasks-line-href" href="#">На рассмотрении</a>
+            </div>
+            <br>
+            <div class="task-card">
+                <a class="task-card-title" href="#">Вернуть сумму двух чисел</a>
+                <p class="task-card-desc">Создайте функцию, которая принимает два числа в качестве параметров и
+                    возвращает их сумму.</p>
+                <div class="task-card-tags-row">
+                    <p class="task-card-tag-comp">Легко</p>
+                    <p class="task-card-tag">Алгебра</p>
+                    <p class="task-card-tag">Математика</p>
                 </div>
             </div>
         </div>
     </div>
-</body>
-
-</html>
+    <script src="https://snipp.ru/cdn/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+        $('.input-file input[type=file]').on('change', function () {
+            let file = this.files[0];
+            $(this).closest('.input-file').find('.input-file-text').html(file.name);
+        });
+    </script>
+{% endblock content %}

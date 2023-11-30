@@ -20,3 +20,26 @@ class UserLoginForm(AuthenticationForm):
             'username',
             'password',
         ]
+
+
+class ProfileUserForm(forms.ModelForm):
+    username = forms.CharField(widget=forms.TextInput(attrs={
+        'class': "input-login",
+    }))
+
+    email = forms.CharField(required=False, widget=forms.EmailInput(attrs={
+        'class': "input-login",
+    }))
+
+    image = forms.ImageField(required=False, widget=forms.FileInput(attrs={
+        'type': 'file',
+        'name': 'file',
+    }))
+
+    class Meta:
+        model = User
+        fields = [
+            'username',
+            'email',
+            'image',
+        ]
