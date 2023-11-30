@@ -1,0 +1,29 @@
+{% extends "tasks/base.html" %}
+{% load static %}
+
+{% block content %}
+    <form method="POST">
+                {% csrf_token %}
+                <label class=" label-login" for="{{ form.username.id_for_label }}">Почта</label>
+                <br>
+                {{ form.username }}
+                <br>
+                <br>
+                <label class=" label-login" for="{{ form.password.id_for_label }}">Пароль</label>
+                <br>
+                {{ form.password }}
+                <br>
+        <button class="button-login" type="submit">Войти</button>
+    </form>
+    <br>
+    <br>
+    <a class="social-login-vk" href="#"> Войти через VK </a>
+    <br>
+    <br>
+    <br>
+    <a class="social-login-gmail" href="#"> Войти через Google </a>
+    <br>
+    <br>
+    <br>
+    <a class="login-href-reg" href="#">У вас нет аккаунта?</a>
+{% endblock content %}

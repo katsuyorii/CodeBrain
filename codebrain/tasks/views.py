@@ -40,7 +40,7 @@ class TaskDetailView(DetailView, FormMixin):
         return queryset
 
     def get_success_url(self):
-        return reverse_lazy('index')
+        return reverse_lazy('task-detail', kwargs={'task_slug': self.kwargs.get(self.slug_url_kwarg)})
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
