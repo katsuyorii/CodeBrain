@@ -1,5 +1,5 @@
-from django.views.generic import TemplateView, ListView
-from .models import Task, ProgLang, Complexity, Tag
+from django.views.generic import TemplateView, ListView, DetailView
+from .models import Task
 
 
 class IndexView(TemplateView):
@@ -20,5 +20,18 @@ class TasksView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Задачки по программированию'
+
+        return context
+
+
+class TaskDetailView(DetailView):
+    model = Task
+    template_name = 'tasks/task-detail.html'
+    context_object_name = 'task'
+    slug_url_kwarg = 'task_slug'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = self.object.title
 
         return context

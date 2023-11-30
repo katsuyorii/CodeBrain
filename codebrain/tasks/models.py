@@ -1,4 +1,6 @@
 from django.db import models
+from django.urls import reverse
+from users.models import User
 
 
 class Tag(models.Model):
@@ -34,7 +36,7 @@ class ProgLang(models.Model):
 
     class Meta:
         verbose_name = 'Язык программирования'
-        verbose_name_plural = 'Язык программиирования'
+        verbose_name_plural = 'Языки программиирования'
 
 
 class Task(models.Model):
@@ -42,9 +44,14 @@ class Task(models.Model):
     description = models.TextField(verbose_name='Описание задачки')
     complexity = models.ForeignKey(verbose_name='Сложность', to=Complexity, on_delete=models.CASCADE)
     tags = models.ManyToManyField(verbose_name='Теги', to=Tag)
+    slug = models.SlugField(verbose_name='Слаг', max_length=255, null=True)
+    content = models.TextField(verbose_name='Примеры и доп. описание', null=True, blank=True, help_text='*Необязательно')
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse("task-detail", kwargs={"task_slug": self.slug})
 
     class Meta:
         verbose_name = 'Задачка'
@@ -62,3 +69,16 @@ class Solutiuon(models.Model):
     class Meta:
         verbose_name = 'Решение'
         verbose_name_plural = 'Решения'
+
+
+class Comment(models.Model):
+    task = models.ForeignKey(verbose_name='Задача', to=Task, on_delete=models.CASCADE)
+    author = models.ForeignKey(verbose_name='Автор', to=User, on_delete=models.CASCADE)
+    content = models.TextField(verbose_name='Текст комментария')
+
+    def __str__(self):
+        return f'{self.prog_lang.name} | {self.task.title}'
+
+    class Meta:
+        verbose_name = 'Комментарий'
+        verbose_name_plural = 'Комментарии'

@@ -11,7 +11,7 @@
         {% endif %}
         {% for task in tasks %}
         <div class="task-card">
-            <a class="task-card-title" href="#">{{ task.title }}</a>
+            <a class="task-card-title" href="{{ task.get_absolute_url }}">{{ task.title }}</a>
             <p class="task-card-desc">{{ task.description }}</p>
             <div class="task-card-tags-row">
                 <p class="task-card-tag-comp">{{ task.complexity.name }}</p>

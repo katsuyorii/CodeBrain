@@ -1,96 +1,60 @@
-<!DOCTYPE html>
-<html lang="ru">
+{% extends "tasks/base.html" %}
+{% load static %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet">
-    <title>Задания</title>
-</head>
-
-<body>
-    <header class="header">
-        <div class="wrapper">
-            <div class="header-row">
-                <div class="header-row-logo">
-                    <img src="img/logo.svg" alt="Logo">
-                    <a class="logo-href" href="#">Code Brain</a>
-                </div>
-                <ol class="header-row-menu">
-                    <li><a href="#" class="menu-item">Главная</a></li>
-                    <li><a href="#" class="menu-item">Задачки</a></li>
-                    <li><a href="#" class="menu-item">Учебные пособия</a></li>
-                    <li><a href="#" class="menu-item">О проекте</a></li>
-                </ol>
-                <a href="#" class="header-row-login">Войти</a>
-            </div>
+{% block content %}
+<div class="task-row">
+    <div class="task-info">
+        <a class="task-card-title" href="#">{{ task.title }}</a>
+        <div class="task-card-tags-row">
+            <p class="task-card-tag-comp">{{ task.complexity.name }}</p>
+            {% for tag in task.tags.all %}
+                <p class="task-card-tag">{{ tag.name }}</p>
+            {% endfor %}
         </div>
-    </header>
-    <div class="main">
-        <div class="wrapper">
-            <div class="task-row">
-                <div class="task-info">
-                    <a class="task-card-title" href="#">Вернуть сумму двух чисел</a>
-                    <div class="task-card-tags-row">
-                        <p class="task-card-tag-comp">Легко</p>
-                        <p class="task-card-tag">Алгебра</p>
-                        <p class="task-card-tag">Математика</p>
-                    </div>
-                    <p class="task-card-desc">Создайте функцию, которая принимает два числа в качестве параметров и
-                        возвращает их сумму.</p>
-                    <p class="task-info-content">addition(3, 3) => 6
-
-                        addition(-1, 5) => 4
-
-                        addition(20, 1) => 21</p>
-                    <br>
-                    <br>
-                    <p class="task-comment-title">Комментарии</p>
-                    <form method="POST">
-                        <textarea class="task-comment-input" cols="54" rows="7"></textarea>
-                        <br>
-                        <button class="task-comment-button" type="submit">Отправить</button>
-                    </form>
-                    <div class="main-block-anime-detail-bottom-comment">
-                        <div class="img_obertka">
-                            <img class="main-block-anime-detail-bottom-comment-img" src="img/profile.jpg" alt="Logo">
-                        </div>
-                        <div class="main-block-anime-detail-bottom-comment-content">
-                            <div class="main-block-anime-detail-bottom-comment-content-namedata">
-                                <a class="main-block-anime-detail-bottom-comment-content-name" href="#">None None</a>
-                                <p class="main-block-anime-detail-bottom-comment-content-data">21.03.2013 </p>
-                                <a class="main-block-anime-detail-bottom-comment-content-delete"
-                                    href="{{ comm.get_absolute_url }}">Удалить</a>
-                            </div>
-                            <p class="main-block-anime-detail-bottom-comment-content-text">тут что-то пишетсятут что-то
-                                пишетсятут что-то пишетсятут что-то пишетсятут что-то пишетсятут что-то пишетсятут
-                                что-то пишетсятут что-то пишетсятут что-то пишетс
-                            </p>
-                        </div>
-                    </div>
+        <p class="task-card-desc">{{ task.description }}.</p>
+        <p class="task-info-content">{{ task.content }}</p>
+        <br>
+        <br>
+        <p class="task-comment-title">Комментарии</p>
+        <form method="POST">
+            <textarea class="task-comment-input" cols="54" rows="7"></textarea>
+            <br>
+            <button class="task-comment-button" type="submit">Отправить</button>
+        </form>
+        <div class="main-block-anime-detail-bottom-comment">
+            <div class="img_obertka">
+                <img class="main-block-anime-detail-bottom-comment-img" src="img/profile.jpg" alt="Logo">
+            </div>
+            <div class="main-block-anime-detail-bottom-comment-content">
+                <div class="main-block-anime-detail-bottom-comment-content-namedata">
+                    <a class="main-block-anime-detail-bottom-comment-content-name" href="#">None None</a>
+                    <p class="main-block-anime-detail-bottom-comment-content-data">21.03.2013 </p>
+                    <a class="main-block-anime-detail-bottom-comment-content-delete"
+                        href="{{ comm.get_absolute_url }}">Удалить</a>
                 </div>
-                <div class="task-solution">
-                    <p class="task-sol-title">Решения</p>
-                    <div class="task-sol-card">
-                        <p class="task-sol-yap">Python</p>
-                        <details close>
-                            <summary>Решение</summary>
-                            <p class="solution">print('hello')</p>
-                        </details>
-                    </div>
-                    <div class="task-sol-card">
-                        <p class="task-sol-yap">C++</p>
-                        <details close>
-                            <summary>Решение</summary>
-                            <p class="solution">123</p>
-                        </details>
-                    </div>
-                </div>
+                <p class="main-block-anime-detail-bottom-comment-content-text">тут что-то пишетсятут что-то
+                    пишетсятут что-то пишетсятут что-то пишетсятут что-то пишетсятут что-то пишетсятут
+                    что-то пишетсятут что-то пишетсятут что-то пишетс
+                </p>
             </div>
         </div>
     </div>
-</body>
+    <div class="task-solution">
+        <p class="task-sol-title">Решения</p>
+        <div class="task-sol-card">
+            <p class="task-sol-yap">Python</p>
+            <details close>
+                <summary>Решение</summary>
+                <p class="solution">print('hello')</p>
+            </details>
+        </div>
+        <div class="task-sol-card">
+            <p class="task-sol-yap">C++</p>
+            <details close>
+                <summary>Решение</summary>
+                <p class="solution">123</p>
+            </details>
+        </div>
+    </div>
+</div>
+{% endblock content %}
