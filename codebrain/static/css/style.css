@@ -356,13 +356,14 @@ body {
 
 .button-profile {
     padding: 8px 135px;
-    background-color: skyblue;
-    border: 1px solid skyblue;
+    background-color: #419152;
+    border: 1px solid #419152;
     border-radius: 5px;
     margin-top: 10px;
     cursor: pointer;
     font-size: 17px;
     font-family: 'IBM Plex Mono', monospace;
+    color: white;
 }
 
 .profile-info-logo {
@@ -485,7 +486,7 @@ body {
 .profile-logout {
     text-decoration: none;
     color: white;
-    padding: 8px 151px;
+    padding: 8px 155px;
     background-color: red;
     border: 1px solid red;
     border-radius: 5px;
