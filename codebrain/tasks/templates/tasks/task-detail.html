@@ -4,7 +4,7 @@
 {% block content %}
 <div class="task-row">
     <div class="task-info">
-        <a class="task-card-title" href="#">{{ task.title }}</a>
+        <p class="task-card-title-detail" href="#">{{ task.title }}</p>
         <div class="task-card-tags-row">
             <p class="task-card-tag-comp">{{ task.complexity.name }}</p>
             {% for tag in task.tags.all %}
@@ -17,7 +17,8 @@
         <br>
         <p class="task-comment-title">Комментарии</p>
         <form method="POST">
-            <textarea class="task-comment-input" cols="54" rows="7"></textarea>
+            {% csrf_token %}
+            {{ form }}
             <br>
             <button class="task-comment-button" type="submit">Отправить</button>
         </form>

@@ -15,7 +15,6 @@
             <p class="task-card-desc">{{ task.description }}</p>
             <div class="task-card-tags-row">
                 <p class="task-card-tag-comp">{{ task.complexity.name }}</p>
-                <p>{{ task.tags }}</p>
                 {% for tag in task.tags.all %}
                     <p class="task-card-tag">{{ tag.name }}</p>
                 {% endfor %}

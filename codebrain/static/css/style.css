@@ -515,6 +515,7 @@ body {
     cursor: pointer;
     font-family: 'IBM Plex Mono', monospace;
     font-size: 17px;
+    color: white;
 }
 
 .main-block-anime-detail-bottom-comment {
@@ -617,4 +618,10 @@ body {
     background-color: #e9ebee;
     color: black;
     border: 1px solid #ddd;
+}
+
+.task-card-title-detail {
+    color: black;
+    font-size: 30px;
+    font-weight: 500;
 }
