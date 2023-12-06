@@ -3,6 +3,7 @@ from django.views.generic import UpdateView, CreateView
 from django.urls import reverse_lazy
 from .forms import UserLoginForm, ProfileUserForm, UserRegistrationForm
 from .models import User
+from django.contrib import messages
 
 
 class LoginUserView(LoginView):
@@ -10,6 +11,7 @@ class LoginUserView(LoginView):
     template_name = 'users/login.html'
 
     def get_success_url(self):
+        messages.success(self.request, 'Вы успешно вошли в систему!')
         return reverse_lazy('index')
 
 
@@ -19,6 +21,7 @@ class ProfileUserView(UpdateView):
     template_name = 'users/profile.html'
 
     def get_success_url(self):
+        messages.success(self.request, 'Данные успешно обновлены!')
         return reverse_lazy('profile')
 
     def get_object(self):
@@ -30,4 +33,5 @@ class RegistrationUserView(CreateView):
     template_name = 'users/register.html'
 
     def get_success_url(self):
-        return reverse_lazy('profile')
+        messages.success(self.request, 'Вы успешно зарегестрировались в системе!')
+        return reverse_lazy('index')

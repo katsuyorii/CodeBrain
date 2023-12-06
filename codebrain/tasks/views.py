@@ -3,6 +3,7 @@ from .models import Task, Solutiuon, Comment
 from .forms import AddCommentForm
 from django.views.generic.edit import FormMixin
 from django.urls import reverse_lazy
+from django.contrib import messages
 
 
 class IndexView(TemplateView):
@@ -46,7 +47,7 @@ class TaskDetailView(DetailView, FormMixin):
         context = super().get_context_data(**kwargs)
         context['title'] = self.object.title
         context['solutions'] = Solutiuon.objects.filter(task_id=self.object.pk).select_related('prog_lang')
-        context['comments'] = Comment.objects.filter(task_id=self.object.pk).select_related('author')
+        context['comments'] = Comment.objects.filter(task_id=self.object.pk).select_related('author').order_by('-date_created')
         context['form'] = self.get_form()
 
         return context
@@ -60,6 +61,7 @@ class TaskDetailView(DetailView, FormMixin):
             comm.author_id = request.user.pk
             comm.task_id = current_task.pk
             comm.save()
+            messages.success(self.request, 'Комментарий был успешно добавлен!')
             return self.form_valid(form)
         else:
             return self.form_invalid(form)

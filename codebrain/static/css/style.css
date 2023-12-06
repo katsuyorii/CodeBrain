@@ -737,3 +737,17 @@ body {
 .input-file input[type=file]:disabled+.input-file-btn {
     background-color: #eee;
 }
+
+.success {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: LightBlue;
+    color: green;
+    font-size: 16px;
+    margin-bottom: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-radius: 7px;
+    font-weight: 500;
+}

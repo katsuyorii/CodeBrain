@@ -3,6 +3,7 @@
 
 {% block content %}
 <form method="POST">
+    <p>{{ form.errors }}</p>
     {% csrf_token %}
     <label class=" label-login" for="{{ form.username.id_for_label }}">Почта</label>
     <br>

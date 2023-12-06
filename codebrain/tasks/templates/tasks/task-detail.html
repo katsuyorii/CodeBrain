@@ -2,6 +2,13 @@
 {% load static %}
 
 {% block content %}
+{% if messages %}
+        {% for message in messages %}
+            <div class="{{message.tags}}">
+                {{ message }}
+            </div>
+        {% endfor %}
+{% endif %}
 <div class="task-row">
     <div class="task-info">
         <p class="task-card-title-detail" href="#">{{ task.title }}</p>
@@ -16,12 +23,14 @@
         <br>
         <br>
         <p class="task-comment-title">Комментарии</p>
+        {% if user.is_authenticated %}
         <form method="POST">
             {% csrf_token %}
             {{ form }}
             <br>
             <button class="task-comment-button" type="submit">Отправить</button>
         </form>
+        {% endif %}
         {% for comm in comments %}
             <div class="main-block-anime-detail-bottom-comment">
                 <div class="img_obertka">
