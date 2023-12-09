@@ -76,9 +76,13 @@ class Comment(models.Model):
     author = models.ForeignKey(verbose_name='Автор', to=User, on_delete=models.CASCADE)
     content = models.TextField(verbose_name='Текст комментария')
     date_created = models.DateTimeField(verbose_name='Дата создания', auto_now_add=True, null=True, blank=True)
+    slug = models.SlugField(verbose_name='Слаг', max_length=255, null=True)
 
     def __str__(self):
         return f'{self.author.username} | {self.task.title}'
+
+    def get_absolute_url(self):
+        return reverse("comm-delete", kwargs={"comm_slug": self.slug})
 
     class Meta:
         verbose_name = 'Комментарий'

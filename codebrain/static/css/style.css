@@ -751,3 +751,37 @@ body {
     border-radius: 7px;
     font-weight: 500;
 }
+
+.confirm-title {
+    font-size: 20px;
+    font-family: 'IBM Plex Mono', monospace;
+}
+
+.confirm-row {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+}
+
+.confirm-btn {
+    padding: 8px 40px;
+    background-color: green;
+    border: 1px solid green;
+    color: white;
+    cursor: pointer;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 17px;
+    border-radius: 5px;
+}
+
+.confirm-href {
+    padding: 8px 40px;
+    background-color: red;
+    border: 1px solid red;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 17px;
+    color: white;
+    text-decoration: none;
+}

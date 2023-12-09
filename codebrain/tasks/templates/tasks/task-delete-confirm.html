@@ -1,0 +1,20 @@
+{% extends "tasks/base.html" %}
+
+{% block content %}
+{% if messages %}
+    {% for message in messages %}
+        <div class="{{message.tags}}">
+            {{ message }}
+        </div>
+    {% endfor %}
+    </ul>
+{% endif %}
+<h1 class="confirm-title">Вы уверены что хотите удалить комментарий?</h1>
+<div class="confirm-row">
+    <form method="POST">
+        {% csrf_token %}
+        <button class="confirm-btn" type="sublit">ОК</button>
+        <a class="confirm-href" href="{% url 'tasks' %}">Отмена</a>
+    </form>
+</div>
+{% endblock content %}

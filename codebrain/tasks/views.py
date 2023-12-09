@@ -1,4 +1,4 @@
-from django.views.generic import TemplateView, ListView, DetailView
+from django.views.generic import TemplateView, ListView, DetailView, DeleteView
 from .models import Task, Solutiuon, Comment
 from .forms import AddCommentForm
 from django.views.generic.edit import FormMixin
@@ -65,3 +65,14 @@ class TaskDetailView(DetailView, FormMixin):
             return self.form_valid(form)
         else:
             return self.form_invalid(form)
+
+
+class TaskDeleteView(DeleteView):
+    model = Comment
+    template_name = 'tasks/task-delete-confirm.html'
+    context_object_name = 'comm'
+    slug_url_kwarg = 'comm_slug'
+
+    def get_success_url(self):
+        messages.success(self.request, 'Комментарий был успешно удален!')
+        return reverse_lazy('tasks')
